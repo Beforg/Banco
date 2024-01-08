@@ -1,0 +1,12 @@
+.textoPadrao {
+    -fx-font-family: 'Arial';
+    -fx-font-size: 15px;
+    -fx-text-fill: rgb(41, 40, 40);
+}
+
+.textoInfos {
+    -fx-font-family: 'Arial';
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(9, 1, 72);
+}

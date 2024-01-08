@@ -1,0 +1,35 @@
+AnchorPane {
+    -fx-background-color: rgb(183, 204, 255);
+}
+
+Button {
+    -fx-background-color: SteelBlue;
+    -fx-text-fill: white;
+    -fx-font-family:Arial, Helvetica, sans-serif;
+    -fx-font-size: 14px;
+    -fx-border-color: azure;
+    -fx-effect: reflection(0.2, 0.5, 0.5, 0.2);
+    
+}
+
+Button:hover{
+    -fx-background-color: aquamarine;
+    -fx-pref-width: 100px; 
+    -fx-pref-height: 40px; 
+    -fx-effect: dropshadow(gaussian, #333333, 10, 0, 0, 1); 
+    -fx-transition-duration: 0.3s;
+    
+}
+
+Button:pressed{
+    -fx-background-color: rgb(10, 113, 78);
+    -fx-border-color: rgb(15, 18, 84);
+    
+}
+
+.nomeCliente {
+    -fx-font-size: 18px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,33 @@
+Label {
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.6) , 10,0,0,1 );
+       
+}
+TextField {
+    -fx-background-color: white;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: medium;
+    -fx-border-color: black;
+    -fx-border-width: 2.0;
+}
+
+TextField:focused {
+    -fx-border-color: #118cff; 
+    -fx-border-width: 2px; 
+}
+
+PasswordField {
+    -fx-background-color: white;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: medium;
+    -fx-border-color: black;
+    -fx-border-width: 2.0;
+}
+
+PasswordField:focused {
+    -fx-border-color: #118cff; 
+    -fx-border-width: 2px;
+}

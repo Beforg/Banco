@@ -1,0 +1,46 @@
+Button {
+    -fx-background-color: SteelBlue;
+    -fx-text-fill: white;
+    -fx-font-family:Arial, Helvetica, sans-serif;
+    -fx-font-size: 12px;
+    
+}
+
+Button:hover{
+    -fx-background-color: aquamarine;
+
+}
+
+Button:pressed{
+    -fx-background-color: rgb(10, 113, 78);
+}
+Label {
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+       
+}
+TextField {
+    -fx-background-color: white;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: medium;
+    -fx-border-color: black;
+    -fx-border-width: 2.0;
+}
+
+PasswordField:focused {
+    -fx-border-color: #118cff; /* Cor da borda ao receber foco */
+    -fx-border-width: 2px; /* Largura da borda ao receber foco */
+}
+PasswordField {
+    -fx-background-color: white;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: medium;
+    -fx-border-color: black;
+    -fx-border-width: 2.0;
+}
+PasswordField:focused {
+    -fx-border-color: #118cff; /* Cor da borda ao receber foco */
+    -fx-border-width: 2px; /* Largura da borda ao receber foco */
+}

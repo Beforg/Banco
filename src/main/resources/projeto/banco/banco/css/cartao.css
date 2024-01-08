@@ -1,0 +1,18 @@
+AnchorPane {
+    -fx-background-color: SteelBlue;
+    -fx-background-radius: 12px;
+}
+
+#cartao_num {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.validade {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.bank {
+    -fx-font-size: 20px;
+}

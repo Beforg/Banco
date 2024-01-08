@@ -1,0 +1,16 @@
+Button {
+    -fx-background-color: SteelBlue;
+    -fx-text-fill: white;
+    -fx-font-family:Arial, Helvetica, sans-serif;
+    -fx-font-size: 12px;
+    
+}
+
+Button:hover{
+    -fx-background-color: aquamarine;
+
+}
+
+Button:pressed{
+    -fx-background-color: rgb(10, 113, 78);
+}
