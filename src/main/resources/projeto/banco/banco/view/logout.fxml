@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="127.0" prefWidth="193.0" style="-fx-background-color: SteelBlue;" stylesheets="@../css/cadastro.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.banco.bank.Controller.LogoutController">
+   <children>
+      <Line endX="202.0" endY="14.0" layoutX="101.0" layoutY="38.0" startX="-108.5" startY="14.0" />
+      <Label fx:id="ref_window" layoutX="128.0" layoutY="22.0" text="Bank" />
+      <Button layoutX="39.0" layoutY="79.0" mnemonicParsing="false" onAction="#login" text="Ir para tela de Login" />
+      <Button layoutX="188.0" layoutY="79.0" mnemonicParsing="false" onAction="#exit" text="Sair do Bank" />
+   </children>
+</AnchorPane>

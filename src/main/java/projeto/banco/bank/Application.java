@@ -1,4 +1,4 @@
-package projeto.banco.banco;
+package projeto.banco.bank;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

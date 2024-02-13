@@ -1,4 +1,4 @@
-package projeto.banco.bank.Model;
+package projeto.banco.bank.Modelo;
 
 import java.math.BigDecimal;
 
@@ -7,16 +7,16 @@ public class Conta {
     private String datas;
     private String cpf;
     private String endereco;
-    private String password;
-    private Integer conta;
+    private String id;
+    private String conta;
     private BigDecimal saldo;
 
-    public Conta(String nome, String datas, String cpf, String endereco, String password, Integer conta, BigDecimal saldo) {
+    public Conta(String nome, String datas, String cpf, String endereco, String id, String conta, BigDecimal saldo) {
         this.nome = nome;
         this.datas = datas;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.password = password;
+        this.id = id;
         this.conta = conta;
         this.saldo = saldo;
     }
@@ -53,19 +53,19 @@ public class Conta {
         this.endereco = endereco;
     }
 
-    public String getPassword() {
-        return password;
+    public String getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Integer getConta() {
+    public String getConta() {
         return conta;
     }
 
-    public void setConta(Integer conta) {
+    public void setConta(String conta) {
         this.conta = conta;
     }
 

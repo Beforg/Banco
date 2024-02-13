@@ -1,4 +1,4 @@
-package projeto.banco.bank;
+package projeto.banco.bank.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
