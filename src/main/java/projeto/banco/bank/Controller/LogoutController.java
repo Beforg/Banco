@@ -10,6 +10,7 @@ public class LogoutController {
     private Label ref_window;
     ViewControl viewControl = new ViewControl();;
     public void login() {
+        ViewControl.isOpen = true;
         viewControl.showLogin();
         Stage stage = (Stage) ref_window.getScene().getWindow();
         stage.close();

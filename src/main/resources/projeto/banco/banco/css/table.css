@@ -1,0 +1,95 @@
+.table-view {
+    -fx-background-color: SteelBlue;
+    -fx-border: 1px solid;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+
+}
+
+.table-row-cell {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-color: SteelBlue;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+
+}
+
+.table-cell {
+    -fx-text-fill: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-color: SteelBlue;
+
+}
+.table-view .column-header {
+    -fx-background-color: SteelBlue;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+// código para arrumar o scroll da tabela:
+
+.table-view .scroll-bar:vertical .increment-button.up {
+    -fx-background-color: LightBlue;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:vertical .decrement-button.down {
+    -fx-background-color: LightBlue;
+    -fx-padding: 0;
+},
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: SteelBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:vertical .increment-arrow.up {
+    -fx-background-color: LightBlue;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: LightBlue;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: LightBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: LightBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: LightBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:horizontal .increment-button {
+    -fx-background-color: LightBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: LightBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+.table-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: LightBlue;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+

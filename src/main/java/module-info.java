@@ -13,6 +13,8 @@ module projeto.banco.banco {
     exports projeto.banco.bank.Connection;
     opens projeto.banco.bank.Connection to javafx.fxml;
     opens projeto.banco.banco.img to javafx.fxml;
+    opens projeto.banco.bank.Modelo to javafx.fxml;
+    exports projeto.banco.bank.Modelo;
 
 
 

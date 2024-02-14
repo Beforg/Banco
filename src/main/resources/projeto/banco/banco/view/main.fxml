@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -79,7 +81,18 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="transacoes_home" layoutX="258.0" layoutY="261.0" prefHeight="310.0" prefWidth="654.0" style="-fx-background-color: SteelBlue;" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="258.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="261.0" />
+      <AnchorPane fx:id="transacoes_home" layoutX="258.0" layoutY="261.0" prefHeight="310.0" prefWidth="654.0" style="-fx-background-color: SteelBlue;" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="258.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="261.0">
+         <children>
+            <TableView fx:id="hist_transf" layoutX="160.0" layoutY="55.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="40.0" resizable="false" text="ID" />
+                <TableColumn fx:id="data" prefWidth="149.0" resizable="false" text="Data" />
+                  <TableColumn fx:id="origem" prefWidth="154.0" resizable="false" text="Origem" />
+                  <TableColumn fx:id="destino" prefWidth="169.0" resizable="false" text="Destino" />
+                  <TableColumn fx:id="valor" prefWidth="137.0" resizable="false" text="Valor" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
       <Line fx:id="linha_home" endX="-7.0" endY="-42.0" fill="#7c1414" layoutX="235.0" layoutY="85.0" startX="-7.0" startY="484.0" stroke="#2f2c2c" strokeWidth="3.0" />
       <AnchorPane fx:id="pane_conta" layoutX="213.0" layoutY="29.0" prefHeight="564.0" prefWidth="747.0" visible="false">
          <children>
@@ -131,25 +144,25 @@
             <VBox fx:id="edita_infosBox" layoutX="263.0" layoutY="221.0" prefHeight="294.0" prefWidth="462.0" spacing="10.0" styleClass="vBox" stylesheets="@../css/conta.css" visible="false">
                <children>
                   <Label styleClass="textoPadrao" text="Alterar nome:" />
-                  <TextField maxWidth="-Infinity" prefHeight="27.0" prefWidth="421.0" stylesheets="@../css/conta.css">
+                  <TextField fx:id="tfEdit_nome" maxWidth="-Infinity" prefHeight="27.0" prefWidth="421.0" stylesheets="@../css/conta.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextField>
                   <Label layoutX="32.0" layoutY="22.0" styleClass="textoPadrao" text="Alterar endereço:" />
-                  <TextField layoutX="32.0" layoutY="49.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="420.0" stylesheets="@../css/conta.css">
+                  <TextField fx:id="tfEdit_endereco" layoutX="32.0" layoutY="49.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="420.0" stylesheets="@../css/conta.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextField>
                   <Label layoutX="32.0" layoutY="86.0" styleClass="textoPadrao" text="Alterar data de nascimento:" />
-                  <TextField layoutX="32.0" layoutY="113.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="420.0" stylesheets="@../css/conta.css">
+                  <TextField fx:id="tfEdit_dataNasc" layoutX="32.0" layoutY="113.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="420.0" stylesheets="@../css/conta.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="420.0" stylesheets="@../css/conta.css" text="Confirmar" />
-                  <Button cancelButton="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="420.0" stylesheets="@../css/conta.css" text="Voltar" />
+                  <Button mnemonicParsing="false" onAction="#confirma_edit" prefHeight="28.0" prefWidth="420.0" stylesheets="@../css/conta.css" text="Confirmar" />
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#voltar_edit" prefHeight="28.0" prefWidth="420.0" stylesheets="@../css/conta.css" text="Voltar" />
                </children>
                <padding>
                   <Insets left="20.0" top="10.0" />

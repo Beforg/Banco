@@ -8,6 +8,8 @@ import projeto.banco.bank.Connection.OperacaoDAO;
 import javafx.scene.control.TextField;
 import projeto.banco.bank.Connection.UpdateDAO;
 import projeto.banco.bank.Modelo.TextFieldFormatter;
+import projeto.banco.bank.View.ViewControl;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,10 +21,12 @@ public class DepositarController implements Initializable {
     OperacaoDAO operacaoDAO = new OperacaoDAO();
     UpdateDAO updateDao = new UpdateDAO();
     public void confirmar() {
+
         double valor = Double.parseDouble(tf_valor.getText()
                 .replace("R$", "")
                 .replace(",", ".")
                 .replace(" ", ""));
+
         if (!tf_conta.getText().isEmpty() && !tf_valor.getText().isEmpty() && valor > 0) {
             ApplicationController.contaInfos = updateDao.atualiza_infos(ApplicationController.contaInfos.getCpf());
             operacaoDAO.depositarValor(tf_conta.getText(), valor);
@@ -34,7 +38,9 @@ public class DepositarController implements Initializable {
         }
     }
     public void cancelar() {
-        System.out.println("Voltar");
+        ViewControl.isOpen = true;
+        Stage stage = (Stage) tf_conta.getScene().getWindow();
+        stage.close();
     }
 
     @Override

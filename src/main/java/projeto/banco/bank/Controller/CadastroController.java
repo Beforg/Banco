@@ -45,7 +45,7 @@ public class CadastroController implements Initializable {
         Connection conn = connection.recuperarConexao();
 
         try {
-
+        ViewControl.isOpen = true;
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
         preparedStatement.setString(1, tf_nome.getText());
@@ -58,7 +58,7 @@ public class CadastroController implements Initializable {
         ShowMessage.confirma("Atenção", "Cadastro", "Cadastro realizado com sucesso!");
         preparedStatement.execute();
         preparedStatement.close();
-            System.out.println(tf_cpf.getText());
+        System.out.println(tf_cpf.getText());
         Stage stage = (Stage) tf_nome.getScene().getWindow();
         stage.close();
 

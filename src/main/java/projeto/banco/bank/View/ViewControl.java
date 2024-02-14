@@ -2,10 +2,11 @@ package projeto.banco.bank.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ViewControl {
     /*Controle das telas*/
-    public boolean isOpen = true;
+    public static boolean isOpen = true;
     public ViewControl() {
     }
     /*Mostra a tela principal*/
@@ -40,6 +41,7 @@ public class ViewControl {
             stage.setScene(scene);
             stage.setTitle("Bank: Cadastro");
             stage.show();
+            stage.setResizable(false);
             stage.setOnCloseRequest(e -> isOpen = true);
 
         }
@@ -98,6 +100,7 @@ public class ViewControl {
 
             stage.setScene(scene);
             stage.setTitle("Bank: Cadastro");
+            stage.setResizable(false);
             stage.show();
             stage.setOnCloseRequest(e -> isOpen = true);
 

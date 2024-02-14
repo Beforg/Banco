@@ -8,7 +8,6 @@ Button {
     -fx-font-family:Arial, Helvetica, sans-serif;
     -fx-font-size: 14px;
     -fx-border-color: azure;
-    -fx-effect: reflection(0.2, 0.5, 0.5, 0.2);
     
 }
 
@@ -40,7 +39,6 @@ Button:pressed{
     -fx-font-family:Arial, Helvetica, sans-serif;
     -fx-font-size: 14px;
     -fx-border-color: azure;
-    -fx-effect: reflection(0.2, 0.5, 0.5, 0.2);
 }
 
 .botaoAtualizar:pressed{

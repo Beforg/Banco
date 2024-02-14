@@ -1,16 +1,17 @@
 package projeto.banco.bank.Connection;
 
 import projeto.banco.bank.Alert.ShowMessage;
-import projeto.banco.bank.Controller.ApplicationController;
 
+
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 public class OperacaoDAO {
     private final ConnectionFactory connectionFactory;
-    ApplicationController applicationController = new ApplicationController();
     public OperacaoDAO() {
         this.connectionFactory = new ConnectionFactory();
     }
@@ -46,23 +47,23 @@ public class OperacaoDAO {
     }
 
     public void transferirValor(String remetente, String destinatario, double valor) {
-        String decreaseBalanceQuery = "UPDATE cadastros SET credito = credito - ? WHERE CONTA = ?";
-        String increaseBalanceQuery = "UPDATE cadastros SET credito = credito + ? WHERE CONTA = ?";
+        String subtraiSaldoQuery = "UPDATE cadastros SET credito = credito - ? WHERE CONTA = ?";
+        String incrementaSaldoQuery = "UPDATE cadastros SET credito = credito + ? WHERE CONTA = ?";
 
         double balance = checkBalance(remetente);
         if (balance < valor) {
             ShowMessage.error("Atenção", "Erro", "Saldo insuficiente para transferência");
-            throw new RuntimeException("Insufficient balance for transfer");
+            throw new RuntimeException("Saldo insuficiente para transferência");
         } else {
             try (Connection conn = connectionFactory.recuperarConexao()) {
-                try (PreparedStatement decreaseStmt = conn.prepareStatement(decreaseBalanceQuery)) {
+                try (PreparedStatement decreaseStmt = conn.prepareStatement(subtraiSaldoQuery)) {
                     decreaseStmt.setDouble(1, valor);
                     decreaseStmt.setString(2, remetente);
                     decreaseStmt.executeUpdate();
 
                 }
 
-                try (PreparedStatement increaseStmt = conn.prepareStatement(increaseBalanceQuery)) {
+                try (PreparedStatement increaseStmt = conn.prepareStatement(incrementaSaldoQuery)) {
                     increaseStmt.setDouble(1, valor);
                     increaseStmt.setString(2, destinatario);
                     increaseStmt.executeUpdate();
@@ -90,6 +91,20 @@ public class OperacaoDAO {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+    public void registraTransferencia (String origem, String destino, double valor, LocalDateTime data) {
+        String insertTransferQuery = "INSERT INTO historico_transferencia (origem, destino, valor_transf, data_transf) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = connectionFactory.recuperarConexao();
+             PreparedStatement insertTransferStmt = conn.prepareStatement(insertTransferQuery)) {
+            insertTransferStmt.setString(1, origem);
+            insertTransferStmt.setString(2, destino);
+            insertTransferStmt.setDouble(3, valor);
+            insertTransferStmt.setObject(4, data);
+            insertTransferStmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
