@@ -21,21 +21,26 @@ public class DepositarController implements Initializable {
     OperacaoDAO operacaoDAO = new OperacaoDAO();
     UpdateDAO updateDao = new UpdateDAO();
     public void confirmar() {
+        try {
+            double valor = Double.parseDouble(tf_valor.getText()
+                    .replace("R$", "")
+                    .replace(",", ".")
+                    .replace(" ", ""));
 
-        double valor = Double.parseDouble(tf_valor.getText()
-                .replace("R$", "")
-                .replace(",", ".")
-                .replace(" ", ""));
-
-        if (!tf_conta.getText().isEmpty() && !tf_valor.getText().isEmpty() && valor > 0) {
-            ApplicationController.contaInfos = updateDao.atualiza_infos(ApplicationController.contaInfos.getCpf());
-            operacaoDAO.depositarValor(tf_conta.getText(), valor);
-            ShowMessage.information("Atenção", "Depósito", "Depósito realizado com sucesso!");
-            Stage stage = (Stage) tf_conta.getScene().getWindow();
-            stage.close();
-        } else {
-            ShowMessage.error("Atenção", "Erro", "Preencha todos os campos corretamente!");
+            if (!tf_conta.getText().isEmpty() && !tf_valor.getText().isEmpty() && valor > 0) {
+                ViewControl.isOpen = true;
+                ApplicationController.contaInfos = updateDao.atualiza_infos(ApplicationController.contaInfos.getCpf());
+                operacaoDAO.depositarValor(tf_conta.getText(), valor);
+                ShowMessage.information("Atenção", "Depósito", "Depósito realizado com sucesso!");
+                Stage stage = (Stage) tf_conta.getScene().getWindow();
+                stage.close();
+            } else {
+                ShowMessage.error("Atenção", "Erro", "Preencha todos os campos corretamente!");
+            }
+        } catch (NumberFormatException e) {
+            ShowMessage.error("Atenção", "Erro", "Valor inválido!");
         }
+
     }
     public void cancelar() {
         ViewControl.isOpen = true;

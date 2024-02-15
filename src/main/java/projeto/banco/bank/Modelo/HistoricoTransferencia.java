@@ -1,6 +1,7 @@
 package projeto.banco.bank.Modelo;
 
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class HistoricoTransferencia {

@@ -8,7 +8,7 @@ import projeto.banco.bank.View.ViewControl;
 public class LogoutController {
     @FXML
     private Label ref_window;
-    ViewControl viewControl = new ViewControl();;
+    ViewControl viewControl = new ViewControl();
     public void login() {
         ViewControl.isOpen = true;
         viewControl.showLogin();

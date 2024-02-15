@@ -22,7 +22,7 @@ public class LoginController implements Initializable {
     ViewControl viewControl = new ViewControl();
     public void cadastro() {
         viewControl.showCadastro();
-        viewControl.isOpen = false;
+        ViewControl.isOpen = false;
     }
     public void logar() {
         System.out.println(tf_login.getText());

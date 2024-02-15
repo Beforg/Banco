@@ -2,8 +2,6 @@ package projeto.banco.bank.Connection;
 
 import projeto.banco.bank.Alert.ShowMessage;
 
-
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,7 +72,7 @@ public class OperacaoDAO {
         }
     }
 
-    public double depositarValor(String conta, double valor) {
+    public void depositarValor(String conta, double valor) {
         String depositQuery = "UPDATE cadastros SET CREDITO = CREDITO + ? WHERE CONTA = ?";
         if (!checkAccount(conta)) {
             ShowMessage.error("Atenção", "Erro", "Conta não encontrada");
@@ -87,7 +85,7 @@ public class OperacaoDAO {
                 depositStmt.executeUpdate();
                 System.out.println("Depósito realizado com sucesso!");
 
-                return checkBalance(conta);
+                checkBalance(conta);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

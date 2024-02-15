@@ -31,8 +31,6 @@
     -fx-text-fill: white;
     -fx-font-size: 14px;
 }
-// código para arrumar o scroll da tabela:
-
 .table-view .scroll-bar:vertical .increment-button.up {
     -fx-background-color: LightBlue;
     -fx-padding: 0;

@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -14,11 +13,11 @@ import javafx.stage.Stage;
 import projeto.banco.bank.Alert.ShowMessage;
 import projeto.banco.bank.Connection.UpdateDAO;
 import projeto.banco.bank.Modelo.Conta;
+import projeto.banco.bank.Modelo.InitializeConfig;
 import projeto.banco.bank.Modelo.HistoricoTransferencia;
 import projeto.banco.bank.Modelo.TextFieldFormatter;
 import projeto.banco.bank.View.ViewControl;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
@@ -101,49 +100,15 @@ public class ApplicationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (contaInfos != null) {
+            InitializeConfig.configuraTabelaHistorico(data, origem, destino, valor, id, hist_transf, updateDAO, contaInfos);
+
+            InitializeConfig.configuraInformacoesConta(contaInfos, nome_cliente, cliente_conta, cpf_conta, data_conta,
+                    ender_conta, id_conta, num_conta, saldo_cliente, numero_card_conta, nome_card_conta);
+            InitializeConfig.imgBotao(image, bt_att);
 
             NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
             String valorFormatado = nf.format(contaInfos.getSaldo());
-
-            nome_cliente.setText(contaInfos.getNome());
-            cliente_conta.setText(contaInfos.getNome());
-            cpf_conta.setText(contaInfos.getCpf());
-            data_conta.setText(contaInfos.getDatas());
-            ender_conta.setText(contaInfos.getEndereco());
-            id_conta.setText(contaInfos.getId());
-            num_conta.setText(contaInfos.getConta());
-            saldo_cliente.setText(valorFormatado);
-            numero_card_conta.setText(contaInfos.getConta());
-            nome_card_conta.setText(contaInfos.getNome());
-
-
             bt_att.setGraphic(new ImageView(image));
-
-            /*Tabela Histórico de Transferência*/
-
-            data.setCellValueFactory(new PropertyValueFactory<HistoricoTransferencia, LocalDateTime>("data"));
-            origem.setCellValueFactory(new PropertyValueFactory<HistoricoTransferencia, String>("origem"));
-            destino.setCellValueFactory(new PropertyValueFactory<HistoricoTransferencia, String>("destino"));
-            valor.setCellValueFactory(new PropertyValueFactory<HistoricoTransferencia, Double>("valor"));
-            valor.setCellFactory(column -> {
-                return new TableCell<HistoricoTransferencia, Double>() {
-                    @Override
-                    protected void updateItem(Double item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (item == null || empty) {
-                            setText(null);
-                        } else {
-                            NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                            setText(nf.format(item));
-                        }
-                    }
-                };
-            });
-            id.setCellValueFactory(new PropertyValueFactory<HistoricoTransferencia, Integer>("id"));
-
-            historico = FXCollections.observableArrayList(updateDAO.getTransferencias(contaInfos.getConta()));
-            hist_transf.setItems(historico);
 
             /*Formatacao*/
             TextFieldFormatter.dataField(tfEdit_dataNasc);
@@ -165,29 +130,7 @@ public class ApplicationController implements Initializable {
     }
 
     public void apagar_conta() {
-        if (!contaInfos.getSaldo().equals(BigDecimal.ZERO)) {
-            ShowMessage.error("Atenção", "Erro", "Não é possível apagar a conta com saldo positivo!");
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmação");
-            alert.setHeaderText("Apagar conta");
-            alert.setContentText("Deseja realmente apagar a conta?");
-
-            if (alert.showAndWait().get() == ButtonType.OK) {
-                ShowMessage.information("Atenção", "Conta", "Conta apagada com sucesso!");
-                System.out.println("Apagar conta");
-                updateDAO.apagar_conta(contaInfos.getCpf());
-                viewControl.showLogout();
-                ViewControl.isOpen = false;
-                Stage stage = (Stage) nome_cliente.getScene().getWindow();
-                stage.close();
-
-            } else {
-                System.out.println("Cancelar");
-            }
-
-        }
-
+        InitializeConfig.apagarContaUser(contaInfos, viewControl, updateDAO, nome_cliente);
     }
     public void editar_info() {
         edita_infosBox.setVisible(true);
@@ -196,6 +139,9 @@ public class ApplicationController implements Initializable {
 
     public void att_btn() {
         contaInfos = updateDAO.atualiza_infos(contaInfos.getCpf());
+        uptadeUI();
+    }
+    private void uptadeUI() {
         atualizaHistoricoTransferencia();
         initialize(null, null);
     }

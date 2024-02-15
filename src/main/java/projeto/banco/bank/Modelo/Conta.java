@@ -3,13 +3,13 @@ package projeto.banco.bank.Modelo;
 import java.math.BigDecimal;
 
 public class Conta {
-    private String nome;
-    private String datas;
-    private String cpf;
-    private String endereco;
+    private final String nome;
+    private final String datas;
+    private final String cpf;
+    private final String endereco;
     private String id;
     private String conta;
-    private BigDecimal saldo;
+    private final BigDecimal saldo;
 
     public Conta(String nome, String datas, String cpf, String endereco, String id, String conta, BigDecimal saldo) {
         this.nome = nome;
@@ -25,32 +25,18 @@ public class Conta {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getDatas() {
         return datas;
-    }
-
-    public void setDatas(String datas) {
-        this.datas = datas;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public String getEndereco() {
         return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public String getId() {
@@ -73,7 +59,4 @@ public class Conta {
         return saldo;
     }
 
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
-    }
 }
